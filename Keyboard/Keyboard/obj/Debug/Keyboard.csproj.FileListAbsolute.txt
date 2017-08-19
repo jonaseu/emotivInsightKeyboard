@@ -1,0 +1,2 @@
+C:\Users\Jonas\Desktop\Visual Studio Projects\Keyboard\Keyboard\bin\Debug\Keyboard.exe.config
+C:\Users\Jonas\Desktop\Visual Studio Projects\Insight Keyboard\Keyboard\Keyboard\bin\Debug\Keyboard.exe.config

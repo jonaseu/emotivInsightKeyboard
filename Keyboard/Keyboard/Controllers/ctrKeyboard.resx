@@ -121,17 +121,6 @@
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="toolStripMenuItem1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAA/0lEQVQ4T7VUQQ3DMAwshEAY
-        hEEohEIohEIYg0IYhELYa/0OQiEUwnbXXqY4jZZo2U46qbbPVuK4bnK4z7MDW1KuOqDQAD7FXu5yIOmk
-        zw2wl6DgIvcG2Gd9pgHBVYkT2Ad2SPoYe3hb6RYIdBJ8w3R/EVgjYQlNGwwQHCNxCUelH4HgLRKT9LEd
-        ZDKu9B1wcM44GuFrek6SvUFfpCGZewEdBRzaWOB5aDZ9kSZk+5eCvDKPW3tlts1JtgOO+kcJgeDPxyZ1
-        7RxXpVsg8KnZOXYqY4GAXwb88XPLwT9Oejl4QGBWEuywDfH6MquuCEjiaXzBQe46oBD7S9o5O6BpXtJQ
-        3mmxwE/NAAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAIAEBAAAAAAIABoBAAAJgAAACAgAAAAACAAqBAAAI4EAAAoAAAAEAAAACAAAAABACAAAAAAAEAE

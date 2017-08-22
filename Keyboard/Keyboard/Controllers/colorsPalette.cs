@@ -3,24 +3,27 @@ using System.Windows.Forms;
 
 namespace Keyboard.Controllers
 {
-    class colorsPalette
+    static class colorsPalette
     {
-        public Color AplicationBackground 
+        public static Color AplicationBackground 
         {
             get { return System.Drawing.Color.FromArgb(28, 28, 28); }
         }
-        public Color ButtonColor
+        public static Color ButtonColor
         {
             get { return System.Drawing.Color.FromArgb(38, 38, 38); }
         }
-        public Color ButtonBorder
+        public static Color ButtonBorder
         {
             get { return System.Drawing.Color.FromArgb(58, 58, 58); }
-        } 
-
-        public Color FontColor
+        }
+        public static Color FontColor
         {
             get { return System.Drawing.Color.FromArgb(197, 199, 199); }
+        }
+        public static Color HighlightColor
+        {
+            get { return Color.Yellow; }
         }
 
     }
@@ -37,7 +40,7 @@ namespace Keyboard.Controllers
         }
         public override Color MenuItemSelectedGradientEnd
         {
-            get { return Color.Transparent; }
+            get { return Color.FromArgb(58, 58, 58); }
         }
         public override Color MenuItemBorder
         {

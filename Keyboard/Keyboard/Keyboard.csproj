@@ -44,8 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Business Rules\burKeyboard.cs" />
+    <Compile Include="Business Rules\rulKeyboard.cs" />
     <Compile Include="Controllers\alterateRenderer.cs" />
+    <Compile Include="Controllers\colorsPalette.cs" />
     <Compile Include="Controllers\ctrKeyboard.cs">
       <SubType>Form</SubType>
     </Compile>

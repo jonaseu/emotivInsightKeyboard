@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
-using System.Reflection;
 using System.Windows.Forms;
 using Keyboard.Business_Rules;
 using Keyboard.Controllers;
@@ -11,87 +11,76 @@ namespace Keyboard
 {
     public partial class ctrKeyboard : Form
     {
-        
-        rulKeyboard _rule = null;
+        public string IpToConnect { get; set; }
+        public int Sensibility { get; set; }
+        public string ClickMode { get; set; }
 
+        private rulKeyboard _rule = null;
+        
         public ctrKeyboard()
         {
+            IpToConnect = "127.9.0.1";
+            Sensibility = 3;
+            ClickMode = "Blink";
+
             InitializeComponent();
             _rule = new rulKeyboard(this);
-            _rule.TimeInterval = 5000;
-            _rule.BeginAlternateLines();
         }
 
         private void ctrKeyboard_Load(object sender, EventArgs e)
         {
             menuStrip1.Renderer = new alterateRenderer();
             label1.BackColor = colorsPalette.FontColor;
-            label2.ForeColor = colorsPalette.FontColor;          
+            label2.ForeColor = colorsPalette.FontColor;
             BackColor = colorsPalette.AplicationBackground;
             menuStrip1.BackColor = colorsPalette.AplicationBackground;
             connectToolStripMenuItem.ForeColor = colorsPalette.FontColor;
-            optionsToolStripMenuItem.ForeColor = colorsPalette.FontColor; 
-            
+            optionsToolStripMenuItem.ForeColor = colorsPalette.FontColor;
+
             //For each button in form alter its colors
-            var buttons = GetAllTypeControls(this, typeof(Button));
-            foreach ( Button btn in buttons)
+            var buttons = misc.GetAllTypeControls(this, typeof(Button));
+            foreach (var control in buttons)
             {
+                var btn = (Button)control;
                 btn.ForeColor = colorsPalette.FontColor;
                 btn.BackColor = colorsPalette.ButtonColor;
                 btn.FlatAppearance.BorderColor = colorsPalette.ButtonBorder;
+                btn.Margin = new Padding(3,4,3,4);
             }
+            _rule.BeginAlternateLines(1000);
         }
 
         //Returns all controls of a given type
-        private IEnumerable<Control> GetAllTypeControls(Control control, Type type)
+        
+        private void ctrKeyboard_Resize(object sender, EventArgs e)
         {
-            var controls = control.Controls.Cast<Control>();
-
-            return controls.SelectMany(ctrl => GetAllTypeControls(ctrl, type))
-                .Concat(controls)
-                .Where(c => c.GetType() == type);
-        }
-
-        public void changeLineColor(int lineNumber)
-        {
-            switch (lineNumber)
+            var buttons = misc.GetAllTypeControls(this, typeof(Button));
+            foreach (var control in buttons)
             {
-                case 1:
-                    if (keyboardLine1.BackColor != colorsPalette.HighlightColor)
-                        keyboardLine1.BackColor = colorsPalette.HighlightColor;
-                    else
-                        keyboardLine1.BackColor = colorsPalette.AplicationBackground;
-                    return;
-                case 2:
-                    if (keyboardLine2.BackColor != colorsPalette.HighlightColor)
-                        keyboardLine2.BackColor = colorsPalette.HighlightColor;
-                    else
-                        keyboardLine2.BackColor = colorsPalette.AplicationBackground;
-                    return;
-                case 3:
-                    if (keyboardLine3.BackColor != colorsPalette.HighlightColor)
-                        keyboardLine3.BackColor = colorsPalette.HighlightColor;
-                    else
-                        keyboardLine3.BackColor = colorsPalette.AplicationBackground;
-                    return;
-                case 4:
-                    if (keyboardLine4.BackColor != colorsPalette.HighlightColor)
-                        keyboardLine4.BackColor = colorsPalette.HighlightColor;
-                    else
-                        keyboardLine4.BackColor = colorsPalette.AplicationBackground;
-                    return;
-                case 5:
-                    if (keyboardLine5.BackColor != colorsPalette.HighlightColor)
-                        keyboardLine5.BackColor = colorsPalette.HighlightColor;
-                    else
-                        keyboardLine5.BackColor = colorsPalette.AplicationBackground;
-                    return;
+                var btn = (Button)control;
+                btn.Font = new Font(btn.Font.FontFamily, Width / 60);
             }
         }
 
-        public void changeColumnColor(int lineNumber, int columnNumber)
+        private void connectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var btn = keyboardLine1.GetControlFromPosition(columnNumber-1,0);
+            _rule.activateKey();
+        }
+
+        public void SwitchLineColor(int lineNumber)
+        {
+            var line = (TableLayoutPanel)keyboardKeys.GetControlFromPosition(0, lineNumber);
+            line.BackColor = (line.BackColor != colorsPalette.HighlightColor ? 
+                colorsPalette.HighlightColor :
+                colorsPalette.AplicationBackground);
+        }
+
+        public void SwitchColumnColor(int lineNumber, int columnNumber)
+        {
+
+            var line = (TableLayoutPanel)keyboardKeys.GetControlFromPosition(0, lineNumber);
+            var btn = line.GetControlFromPosition(columnNumber, 0);
+            
             if (btn.BackColor != colorsPalette.HighlightColor)
             {
                 btn.BackColor = colorsPalette.HighlightColor;
@@ -103,19 +92,17 @@ namespace Keyboard
                 btn.ForeColor = colorsPalette.FontColor;
             }
         }
-        
-        private void ctrKeyboard_Resize(object sender, EventArgs e)
+
+        public void ButtonClicked(int row, int coloumn)
         {
-            var buttons = GetAllTypeControls(this, typeof(Button));
-            foreach (Button btn in buttons)
-            {
-                btn.Font = new Font(btn.Font.FontFamily, Width/60);
-            }
+            var line = (TableLayoutPanel)keyboardKeys.GetControlFromPosition(0, row);
+            var btn = line.GetControlFromPosition(coloumn, 0);
+            label1.Text += btn.Text;
         }
 
-        private void connectToolStripMenuItem_Click(object sender, EventArgs e)
+        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _rule.ShouldBlink = !_rule.ShouldBlink;
+            (new ctrOptions(this)).ShowDialog();
         }
     }
 }

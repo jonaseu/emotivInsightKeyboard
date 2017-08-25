@@ -12,8 +12,9 @@ namespace Keyboard
     public partial class ctrKeyboard : Form
     {
         public string IpToConnect { get; set; }
-        public int Sensibility { get; set; }
         public string ClickMode { get; set; }
+        public int Sensibility { get; set; }
+        public int Interval { get; set; }
 
         private rulKeyboard _rule = null;
         
@@ -22,6 +23,7 @@ namespace Keyboard
             IpToConnect = "127.9.0.1";
             Sensibility = 3;
             ClickMode = "Blink";
+            Interval = 400;
 
             InitializeComponent();
             _rule = new rulKeyboard(this);
@@ -47,7 +49,7 @@ namespace Keyboard
                 btn.FlatAppearance.BorderColor = colorsPalette.ButtonBorder;
                 btn.Margin = new Padding(3,4,3,4);
             }
-            _rule.BeginAlternateLines(1000);
+            //_rule.BeginAlternateLines(Interval);
         }
 
         //Returns all controls of a given type
@@ -64,7 +66,8 @@ namespace Keyboard
 
         private void connectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _rule.activateKey();
+            _rule.BeginAlternateLines(Interval);
+            //_rule.activateKey();
         }
 
         public void SwitchLineColor(int lineNumber)

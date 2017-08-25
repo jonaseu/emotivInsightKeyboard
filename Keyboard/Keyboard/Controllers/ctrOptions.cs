@@ -29,8 +29,10 @@ namespace Keyboard.Controllers
                 comboBox1.SelectedIndex = 0;
             else
                 comboBox1.SelectedIndex = 1;
+            
             richTextBox1.Text = _form.IpToConnect;
             numericUpDown1.Value = _form.Sensibility;
+            numericUpDown2.Value = _form.Interval;
 
             BackColor = colorsPalette.AplicationBackground;
             var labels = misc.GetAllTypeControls(this, typeof(Label));
@@ -61,9 +63,10 @@ namespace Keyboard.Controllers
         {
             if (misc.ValidateIPv4(richTextBox1.Text))
             {
+                _form.Interval = (int)numericUpDown2.Value;
+                _form.Sensibility = (int)numericUpDown1.Value;
                 _form.ClickMode = comboBox1.Text;
                 _form.IpToConnect = richTextBox1.Text;
-                _form.Sensibility = (int)numericUpDown1.Value;
                 this.Close();
             }
             else

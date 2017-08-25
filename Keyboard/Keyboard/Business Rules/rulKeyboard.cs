@@ -14,9 +14,8 @@ namespace Keyboard.Business_Rules
         private ctrKeyboard _form = null;
         private int _currentLine = 0;
         private int _currentColumn = 0;
-        private Timer blinkTimer = null;
-
-        public bool blinkLine = true;
+        private Timer _blinkTimer = null;
+        private bool blinkLine = true;
 
         public rulKeyboard(ctrKeyboard frm)
         {
@@ -26,10 +25,25 @@ namespace Keyboard.Business_Rules
         public void BeginAlternateLines(int interval)
         {
             ShouldBlink = true;
-            blinkTimer = new Timer { Interval = interval };
-            blinkTimer.Tick += TimerTick;
+            _blinkTimer = new Timer { Interval = interval };
+            _blinkTimer.Tick += TimerTick;
             _form.SwitchLineColor(0);
-            blinkTimer.Start();
+            _blinkTimer.Start();
+        }
+
+        public void StopAlternateLines()
+        {
+            _blinkTimer.Stop();
+            ShouldBlink = false;
+
+            if(blinkLine)
+                _form.SwitchLineColor(_currentLine);
+            else
+                _form.SwitchColumnColor(_currentLine,_currentColumn);
+            
+            _currentLine = 0;
+            _currentColumn = 0;
+            blinkLine = true;
         }
 
         private void TimerTick(object sender, EventArgs e)
@@ -61,8 +75,8 @@ namespace Keyboard.Business_Rules
                 _form.SwitchColumnColor(_currentLine,0);
                 _form.SwitchLineColor(_currentLine);
                 //Resets timer
-                blinkTimer.Stop();
-                blinkTimer.Start();
+                _blinkTimer.Stop();
+                _blinkTimer.Start();
             }
             else
             {
@@ -72,8 +86,8 @@ namespace Keyboard.Business_Rules
                 
                 _currentLine = _currentColumn = 0;
                 _form.SwitchLineColor(0);
-                blinkTimer.Stop();
-                blinkTimer.Start();            
+                _blinkTimer.Stop();
+                _blinkTimer.Start();            
             }
         }
     }

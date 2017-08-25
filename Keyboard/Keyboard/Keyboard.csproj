@@ -45,28 +45,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business Rules\rulKeyboard.cs" />
-    <Compile Include="Business Rules\rulOptions.cs" />
     <Compile Include="Business Rules\misc.cs" />
     <Compile Include="Controllers\colorsPalette.cs" />
-    <Compile Include="Controllers\ctrKeyboard.cs">
+    <Compile Include="Controllers\frmKeyboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controllers\ctrKeyboard.Designer.cs">
-      <DependentUpon>ctrKeyboard.cs</DependentUpon>
+    <Compile Include="Controllers\frmKeyboard.Designer.cs">
+      <DependentUpon>frmKeyboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\ctrOptions.cs">
+    <Compile Include="Controllers\frmOptions.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Controllers\ctrOptions.Designer.cs">
-      <DependentUpon>ctrOptions.cs</DependentUpon>
+    <Compile Include="Controllers\frmOptions.Designer.cs">
+      <DependentUpon>frmOptions.cs</DependentUpon>
     </Compile>
     <Compile Include="Initializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Controllers\ctrKeyboard.resx">
-      <DependentUpon>ctrKeyboard.cs</DependentUpon>
+    <EmbeddedResource Include="Controllers\frmKeyboard.resx">
+      <DependentUpon>frmKeyboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controllers\ctrOptions.resx">
-      <DependentUpon>ctrOptions.cs</DependentUpon>
+    <EmbeddedResource Include="Controllers\frmOptions.resx">
+      <DependentUpon>frmOptions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -76,6 +75,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

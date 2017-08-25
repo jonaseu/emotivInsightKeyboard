@@ -1,22 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Windows.Forms;
-using Keyboard.Business_Rules;
+using Keyboard.Properties;
 
 namespace Keyboard.Controllers
 {
-    public partial class ctrOptions : Form
+    public partial class frmOptions : Form
     {
-        private rulOptions _rul = null;
-        private ctrKeyboard _form = null;
+        private frmKeyboard _form = null;
 
-        public ctrOptions(ctrKeyboard form)
+        public frmOptions(frmKeyboard form)
         {
             _form = form;
             InitializeComponent();
@@ -33,6 +26,7 @@ namespace Keyboard.Controllers
             richTextBox1.Text = _form.IpToConnect;
             numericUpDown1.Value = _form.Sensibility;
             numericUpDown2.Value = _form.Interval;
+            numericUpDown3.Text = _form.PortToConnect.ToString();
 
             BackColor = colorsPalette.AplicationBackground;
             var labels = misc.GetAllTypeControls(this, typeof(Label));
@@ -56,7 +50,7 @@ namespace Keyboard.Controllers
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -67,13 +61,19 @@ namespace Keyboard.Controllers
                 _form.Sensibility = (int)numericUpDown1.Value;
                 _form.ClickMode = comboBox1.Text;
                 _form.IpToConnect = richTextBox1.Text;
-                this.Close();
+                _form.PortToConnect = Int32.Parse(numericUpDown3.Text);
+                Close();
             }
             else
             {
-                MessageBox.Show("Invalid IP value", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"Invalid IP value", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Process.Start(@"C:\Program Files (x86)\Emotiv Xavier ControlPanel v3.3.3\Applications\EmotivXavierControlpanel.exe");
         }
     }
 }

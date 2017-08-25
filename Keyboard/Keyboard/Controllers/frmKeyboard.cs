@@ -1,29 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Drawing.Printing;
-using System.Linq;
 using System.Windows.Forms;
 using Keyboard.Business_Rules;
-using Keyboard.Controllers;
 
-namespace Keyboard
+namespace Keyboard.Controllers
 {
-    public partial class ctrKeyboard : Form
+    public partial class frmKeyboard : Form
     {
         public string IpToConnect { get; set; }
         public string ClickMode { get; set; }
         public int Sensibility { get; set; }
         public int Interval { get; set; }
+        public int PortToConnect { get; set; }
 
-        private rulKeyboard _rule = null;
+        private readonly rulKeyboard _rule;
+        private bool _connected; 
         
-        public ctrKeyboard()
+        public frmKeyboard()
         {
-            IpToConnect = "127.9.0.1";
+            IpToConnect = "127.0.0.1";
             Sensibility = 3;
             ClickMode = "Blink";
-            Interval = 400;
+            Interval = 800;
+            PortToConnect = 1900;
 
             InitializeComponent();
             _rule = new rulKeyboard(this);
@@ -49,10 +48,7 @@ namespace Keyboard
                 btn.FlatAppearance.BorderColor = colorsPalette.ButtonBorder;
                 btn.Margin = new Padding(3,4,3,4);
             }
-            //_rule.BeginAlternateLines(Interval);
         }
-
-        //Returns all controls of a given type
         
         private void ctrKeyboard_Resize(object sender, EventArgs e)
         {
@@ -66,8 +62,29 @@ namespace Keyboard
 
         private void connectToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            _rule.BeginAlternateLines(Interval);
-            //_rule.activateKey();
+            if(!_connected)
+            {
+                connectToolStripMenuItem.Text = @"Connecting";
+                Refresh();
+                if (_rule.ConnectEmotiv(IpToConnect, PortToConnect, Interval))
+                {
+                    connectToolStripMenuItem.Text = @"Disconnect";
+                    _connected = true;
+                }
+                else
+                {
+                    MessageBox.Show(@"Unable to connect to " + IpToConnect + @" on port " + PortToConnect, @"Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    connectToolStripMenuItem.Text = @"Connect";
+                }
+            }
+            else
+            {
+                connectToolStripMenuItem.Text = @"Connect";
+                _rule.DisconnectEmotiv();
+                _connected = false;
+            }
+
         }
 
         public void SwitchLineColor(int lineNumber)
@@ -100,12 +117,29 @@ namespace Keyboard
         {
             var line = (TableLayoutPanel)keyboardKeys.GetControlFromPosition(0, row);
             var btn = line.GetControlFromPosition(coloumn, 0);
-            label1.Text += btn.Text;
+
+            Invoke((Action) delegate
+            {
+                label1.Text += btn.Text;
+            });
+
+
         }
 
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            (new ctrOptions(this)).ShowDialog();
+            (new frmOptions(this)).ShowDialog();
+        }
+
+        public void LostConnection()
+        {
+            Invoke((Action) delegate
+            {
+                connectToolStripMenuItem.Text = @"Connect";
+                _connected = false;
+            });
+            MessageBox.Show(@"Lost connection to " + IpToConnect + @" on port " + PortToConnect, @"Error",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

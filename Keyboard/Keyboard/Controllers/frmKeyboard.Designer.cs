@@ -1,9 +1,7 @@
 ﻿
-using Keyboard.Controllers;
-
-namespace Keyboard
+namespace Keyboard.Controllers
  {
-    partial class ctrKeyboard
+    partial class frmKeyboard
     {
 
         /// <summary>
@@ -33,7 +31,7 @@ namespace Keyboard
        
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrKeyboard));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmKeyboard));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -1221,7 +1219,7 @@ namespace Keyboard
             this.connectToolStripMenuItem.AutoSize = false;
             this.connectToolStripMenuItem.Name = "connectToolStripMenuItem";
             this.connectToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 0, 4, 0);
-            this.connectToolStripMenuItem.Size = new System.Drawing.Size(64, 25);
+            this.connectToolStripMenuItem.Size = new System.Drawing.Size(80, 25);
             this.connectToolStripMenuItem.Text = "Connect";
             this.connectToolStripMenuItem.Click += new System.EventHandler(this.connectToolStripMenuItem_Click);
             // 
@@ -1229,7 +1227,7 @@ namespace Keyboard
             // 
             this.optionsToolStripMenuItem.AutoSize = false;
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 25);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(80, 25);
             this.optionsToolStripMenuItem.Text = "Options";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 

@@ -8,5 +8,5 @@ C:\Users\Jonas\Desktop\Visual Studio Projects\emotivInsightKeyboard\Keyboard\Key
 C:\Users\Jonas\Desktop\Visual Studio Projects\emotivInsightKeyboard\Keyboard\Keyboard\obj\Debug\Keyboard.csproj.GenerateResource.Cache
 C:\Users\Jonas\Desktop\Visual Studio Projects\emotivInsightKeyboard\Keyboard\Keyboard\obj\Debug\Keyboard.exe
 C:\Users\Jonas\Desktop\Visual Studio Projects\emotivInsightKeyboard\Keyboard\Keyboard\obj\Debug\Keyboard.pdb
-C:\Users\Jonas\Desktop\Visual Studio Projects\emotivInsightKeyboard\Keyboard\Keyboard\obj\Debug\Keyboard.ctrKeyboard.resources
-C:\Users\Jonas\Desktop\Visual Studio Projects\emotivInsightKeyboard\Keyboard\Keyboard\obj\Debug\Keyboard.Controllers.ctrOptions.resources
+C:\Users\Jonas\Desktop\Visual Studio Projects\emotivInsightKeyboard\Keyboard\Keyboard\obj\Debug\Keyboard.Controllers.frmKeyboard.resources
+C:\Users\Jonas\Desktop\Visual Studio Projects\emotivInsightKeyboard\Keyboard\Keyboard\obj\Debug\Keyboard.Controllers.frmOptions.resources

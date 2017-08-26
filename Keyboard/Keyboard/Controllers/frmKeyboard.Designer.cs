@@ -37,18 +37,13 @@ namespace Keyboard.Controllers
             this.label2 = new System.Windows.Forms.Label();
             this.keyboardKeys = new System.Windows.Forms.TableLayoutPanel();
             this.keyboardLine5 = new System.Windows.Forms.TableLayoutPanel();
-            this.button60 = new System.Windows.Forms.Button();
-            this.button59 = new System.Windows.Forms.Button();
-            this.button58 = new System.Windows.Forms.Button();
-            this.button57 = new System.Windows.Forms.Button();
-            this.button56 = new System.Windows.Forms.Button();
             this.button55 = new System.Windows.Forms.Button();
             this.button54 = new System.Windows.Forms.Button();
             this.button53 = new System.Windows.Forms.Button();
             this.button52 = new System.Windows.Forms.Button();
             this.button51 = new System.Windows.Forms.Button();
             this.button50 = new System.Windows.Forms.Button();
-            this.button49 = new System.Windows.Forms.Button();
+            this.keySpaceBar = new System.Windows.Forms.Button();
             this.keyboardLine4 = new System.Windows.Forms.TableLayoutPanel();
             this.button48 = new System.Windows.Forms.Button();
             this.button47 = new System.Windows.Forms.Button();
@@ -66,7 +61,7 @@ namespace Keyboard.Controllers
             this.button36 = new System.Windows.Forms.Button();
             this.button35 = new System.Windows.Forms.Button();
             this.button34 = new System.Windows.Forms.Button();
-            this.button33 = new System.Windows.Forms.Button();
+            this.keySend = new System.Windows.Forms.Button();
             this.button32 = new System.Windows.Forms.Button();
             this.button31 = new System.Windows.Forms.Button();
             this.button30 = new System.Windows.Forms.Button();
@@ -79,7 +74,7 @@ namespace Keyboard.Controllers
             this.button24 = new System.Windows.Forms.Button();
             this.button23 = new System.Windows.Forms.Button();
             this.button22 = new System.Windows.Forms.Button();
-            this.button21 = new System.Windows.Forms.Button();
+            this.keyEnter = new System.Windows.Forms.Button();
             this.button20 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
@@ -92,7 +87,7 @@ namespace Keyboard.Controllers
             this.button12 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
+            this.keyBackSpace = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -104,6 +99,7 @@ namespace Keyboard.Controllers
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.connectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.keyboardKeys.SuspendLayout();
             this.keyboardLine5.SuspendLayout();
@@ -184,31 +180,21 @@ namespace Keyboard.Controllers
             // 
             // keyboardLine5
             // 
-            this.keyboardLine5.ColumnCount = 12;
-            this.keyboardLine5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692663F));
-            this.keyboardLine5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692663F));
-            this.keyboardLine5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692663F));
-            this.keyboardLine5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692663F));
-            this.keyboardLine5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692663F));
-            this.keyboardLine5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692663F));
-            this.keyboardLine5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692663F));
-            this.keyboardLine5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692663F));
-            this.keyboardLine5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692663F));
-            this.keyboardLine5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692663F));
-            this.keyboardLine5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692663F));
-            this.keyboardLine5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.38071F));
-            this.keyboardLine5.Controls.Add(this.button60, 0, 0);
-            this.keyboardLine5.Controls.Add(this.button59, 0, 0);
-            this.keyboardLine5.Controls.Add(this.button58, 0, 0);
-            this.keyboardLine5.Controls.Add(this.button57, 0, 0);
-            this.keyboardLine5.Controls.Add(this.button56, 0, 0);
+            this.keyboardLine5.ColumnCount = 7;
+            this.keyboardLine5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.726629F));
+            this.keyboardLine5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.726629F));
+            this.keyboardLine5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 45.91359F));
+            this.keyboardLine5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.726629F));
+            this.keyboardLine5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.726629F));
+            this.keyboardLine5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.726629F));
+            this.keyboardLine5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.45326F));
             this.keyboardLine5.Controls.Add(this.button55, 0, 0);
             this.keyboardLine5.Controls.Add(this.button54, 0, 0);
             this.keyboardLine5.Controls.Add(this.button53, 0, 0);
             this.keyboardLine5.Controls.Add(this.button52, 0, 0);
             this.keyboardLine5.Controls.Add(this.button51, 0, 0);
             this.keyboardLine5.Controls.Add(this.button50, 0, 0);
-            this.keyboardLine5.Controls.Add(this.button49, 0, 0);
+            this.keyboardLine5.Controls.Add(this.keySpaceBar, 0, 0);
             this.keyboardLine5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.keyboardLine5.Location = new System.Drawing.Point(0, 204);
             this.keyboardLine5.Margin = new System.Windows.Forms.Padding(0);
@@ -218,88 +204,17 @@ namespace Keyboard.Controllers
             this.keyboardLine5.Size = new System.Drawing.Size(853, 53);
             this.keyboardLine5.TabIndex = 5;
             // 
-            // button60
-            // 
-            this.button60.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button60.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button60.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button60.Location = new System.Drawing.Point(522, 2);
-            this.button60.Margin = new System.Windows.Forms.Padding(2);
-            this.button60.Name = "button60";
-            this.button60.Size = new System.Drawing.Size(61, 49);
-            this.button60.TabIndex = 13;
-            this.button60.Text = "1";
-            this.button60.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button60.UseVisualStyleBackColor = true;
-            // 
-            // button59
-            // 
-            this.button59.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button59.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button59.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button59.Location = new System.Drawing.Point(457, 2);
-            this.button59.Margin = new System.Windows.Forms.Padding(2);
-            this.button59.Name = "button59";
-            this.button59.Size = new System.Drawing.Size(61, 49);
-            this.button59.TabIndex = 12;
-            this.button59.Text = "1";
-            this.button59.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button59.UseVisualStyleBackColor = true;
-            // 
-            // button58
-            // 
-            this.button58.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button58.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button58.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button58.Location = new System.Drawing.Point(392, 2);
-            this.button58.Margin = new System.Windows.Forms.Padding(2);
-            this.button58.Name = "button58";
-            this.button58.Size = new System.Drawing.Size(61, 49);
-            this.button58.TabIndex = 11;
-            this.button58.Text = "1";
-            this.button58.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button58.UseVisualStyleBackColor = true;
-            // 
-            // button57
-            // 
-            this.button57.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button57.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button57.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button57.Location = new System.Drawing.Point(717, 2);
-            this.button57.Margin = new System.Windows.Forms.Padding(2);
-            this.button57.Name = "button57";
-            this.button57.Size = new System.Drawing.Size(134, 49);
-            this.button57.TabIndex = 10;
-            this.button57.Text = "1";
-            this.button57.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button57.UseVisualStyleBackColor = true;
-            // 
-            // button56
-            // 
-            this.button56.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button56.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button56.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button56.Location = new System.Drawing.Point(652, 2);
-            this.button56.Margin = new System.Windows.Forms.Padding(2);
-            this.button56.Name = "button56";
-            this.button56.Size = new System.Drawing.Size(61, 49);
-            this.button56.TabIndex = 9;
-            this.button56.Text = "1";
-            this.button56.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button56.UseVisualStyleBackColor = true;
-            // 
             // button55
             // 
             this.button55.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button55.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button55.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button55.Location = new System.Drawing.Point(587, 2);
+            this.button55.Location = new System.Drawing.Point(588, 2);
             this.button55.Margin = new System.Windows.Forms.Padding(2);
             this.button55.Name = "button55";
             this.button55.Size = new System.Drawing.Size(61, 49);
-            this.button55.TabIndex = 8;
-            this.button55.Text = "1";
-            this.button55.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button55.TabIndex = 11;
+            this.button55.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.button55.UseVisualStyleBackColor = true;
             // 
             // button54
@@ -307,13 +222,12 @@ namespace Keyboard.Controllers
             this.button54.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button54.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button54.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button54.Location = new System.Drawing.Point(132, 2);
+            this.button54.Location = new System.Drawing.Point(653, 2);
             this.button54.Margin = new System.Windows.Forms.Padding(2);
             this.button54.Name = "button54";
             this.button54.Size = new System.Drawing.Size(61, 49);
-            this.button54.TabIndex = 7;
-            this.button54.Text = "1";
-            this.button54.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button54.TabIndex = 10;
+            this.button54.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.button54.UseVisualStyleBackColor = true;
             // 
             // button53
@@ -321,13 +235,12 @@ namespace Keyboard.Controllers
             this.button53.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button53.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button53.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button53.Location = new System.Drawing.Point(67, 2);
+            this.button53.Location = new System.Drawing.Point(718, 2);
             this.button53.Margin = new System.Windows.Forms.Padding(2);
             this.button53.Name = "button53";
-            this.button53.Size = new System.Drawing.Size(61, 49);
-            this.button53.TabIndex = 6;
-            this.button53.Text = "1";
-            this.button53.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button53.Size = new System.Drawing.Size(133, 49);
+            this.button53.TabIndex = 9;
+            this.button53.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.button53.UseVisualStyleBackColor = true;
             // 
             // button52
@@ -335,13 +248,12 @@ namespace Keyboard.Controllers
             this.button52.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button52.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button52.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button52.Location = new System.Drawing.Point(2, 2);
+            this.button52.Location = new System.Drawing.Point(523, 2);
             this.button52.Margin = new System.Windows.Forms.Padding(2);
             this.button52.Name = "button52";
             this.button52.Size = new System.Drawing.Size(61, 49);
-            this.button52.TabIndex = 5;
-            this.button52.Text = "1";
-            this.button52.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button52.TabIndex = 8;
+            this.button52.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.button52.UseVisualStyleBackColor = true;
             // 
             // button51
@@ -349,13 +261,12 @@ namespace Keyboard.Controllers
             this.button51.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button51.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button51.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button51.Location = new System.Drawing.Point(327, 2);
-            this.button51.Margin = new System.Windows.Forms.Padding(2);
+            this.button51.Location = new System.Drawing.Point(22, 2);
+            this.button51.Margin = new System.Windows.Forms.Padding(22, 2, 2, 2);
             this.button51.Name = "button51";
-            this.button51.Size = new System.Drawing.Size(61, 49);
-            this.button51.TabIndex = 4;
-            this.button51.Text = "1";
-            this.button51.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button51.Size = new System.Drawing.Size(41, 49);
+            this.button51.TabIndex = 7;
+            this.button51.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.button51.UseVisualStyleBackColor = true;
             // 
             // button50
@@ -363,44 +274,43 @@ namespace Keyboard.Controllers
             this.button50.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button50.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button50.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button50.Location = new System.Drawing.Point(262, 2);
+            this.button50.Location = new System.Drawing.Point(67, 2);
             this.button50.Margin = new System.Windows.Forms.Padding(2);
             this.button50.Name = "button50";
             this.button50.Size = new System.Drawing.Size(61, 49);
-            this.button50.TabIndex = 3;
-            this.button50.Text = "1";
-            this.button50.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.button50.TabIndex = 6;
+            this.button50.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.button50.UseVisualStyleBackColor = true;
             // 
-            // button49
+            // keySpaceBar
             // 
-            this.button49.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button49.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button49.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button49.Location = new System.Drawing.Point(197, 2);
-            this.button49.Margin = new System.Windows.Forms.Padding(2);
-            this.button49.Name = "button49";
-            this.button49.Size = new System.Drawing.Size(61, 49);
-            this.button49.TabIndex = 2;
-            this.button49.Text = "1";
-            this.button49.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button49.UseVisualStyleBackColor = true;
+            this.keySpaceBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.keySpaceBar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.keySpaceBar.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.keySpaceBar.Location = new System.Drawing.Point(132, 2);
+            this.keySpaceBar.Margin = new System.Windows.Forms.Padding(2);
+            this.keySpaceBar.Name = "keySpaceBar";
+            this.keySpaceBar.Size = new System.Drawing.Size(387, 49);
+            this.keySpaceBar.TabIndex = 5;
+            this.keySpaceBar.Text = " ";
+            this.keySpaceBar.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.keySpaceBar.UseVisualStyleBackColor = true;
             // 
             // keyboardLine4
             // 
             this.keyboardLine4.ColumnCount = 12;
-            this.keyboardLine4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692663F));
-            this.keyboardLine4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692663F));
-            this.keyboardLine4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692663F));
-            this.keyboardLine4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692663F));
-            this.keyboardLine4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692663F));
-            this.keyboardLine4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692663F));
-            this.keyboardLine4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692663F));
-            this.keyboardLine4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692663F));
-            this.keyboardLine4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692663F));
-            this.keyboardLine4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692663F));
-            this.keyboardLine4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692663F));
-            this.keyboardLine4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.38071F));
+            this.keyboardLine4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.keyboardLine4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.keyboardLine4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.keyboardLine4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.keyboardLine4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.keyboardLine4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.keyboardLine4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.keyboardLine4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.keyboardLine4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.keyboardLine4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.keyboardLine4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.692307F));
+            this.keyboardLine4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15.38461F));
             this.keyboardLine4.Controls.Add(this.button48, 0, 0);
             this.keyboardLine4.Controls.Add(this.button47, 0, 0);
             this.keyboardLine4.Controls.Add(this.button46, 0, 0);
@@ -432,7 +342,7 @@ namespace Keyboard.Controllers
             this.button48.Name = "button48";
             this.button48.Size = new System.Drawing.Size(61, 47);
             this.button48.TabIndex = 13;
-            this.button48.Text = ".";
+            this.button48.Text = ",";
             this.button48.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button48.UseVisualStyleBackColor = true;
             // 
@@ -446,7 +356,7 @@ namespace Keyboard.Controllers
             this.button47.Name = "button47";
             this.button47.Size = new System.Drawing.Size(61, 47);
             this.button47.TabIndex = 12;
-            this.button47.Text = ",";
+            this.button47.Text = "M";
             this.button47.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button47.UseVisualStyleBackColor = true;
             // 
@@ -460,7 +370,7 @@ namespace Keyboard.Controllers
             this.button46.Name = "button46";
             this.button46.Size = new System.Drawing.Size(61, 47);
             this.button46.TabIndex = 11;
-            this.button46.Text = "M";
+            this.button46.Text = "N";
             this.button46.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button46.UseVisualStyleBackColor = true;
             // 
@@ -474,7 +384,6 @@ namespace Keyboard.Controllers
             this.button45.Name = "button45";
             this.button45.Size = new System.Drawing.Size(134, 47);
             this.button45.TabIndex = 10;
-            this.button45.Text = "1";
             this.button45.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button45.UseVisualStyleBackColor = true;
             // 
@@ -488,7 +397,6 @@ namespace Keyboard.Controllers
             this.button44.Name = "button44";
             this.button44.Size = new System.Drawing.Size(61, 47);
             this.button44.TabIndex = 9;
-            this.button44.Text = "1";
             this.button44.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button44.UseVisualStyleBackColor = true;
             // 
@@ -502,7 +410,7 @@ namespace Keyboard.Controllers
             this.button43.Name = "button43";
             this.button43.Size = new System.Drawing.Size(61, 47);
             this.button43.TabIndex = 8;
-            this.button43.Text = "1";
+            this.button43.Text = ".";
             this.button43.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button43.UseVisualStyleBackColor = true;
             // 
@@ -516,7 +424,7 @@ namespace Keyboard.Controllers
             this.button42.Name = "button42";
             this.button42.Size = new System.Drawing.Size(61, 47);
             this.button42.TabIndex = 7;
-            this.button42.Text = "C";
+            this.button42.Text = "X";
             this.button42.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button42.UseVisualStyleBackColor = true;
             // 
@@ -530,7 +438,7 @@ namespace Keyboard.Controllers
             this.button41.Name = "button41";
             this.button41.Size = new System.Drawing.Size(61, 47);
             this.button41.TabIndex = 6;
-            this.button41.Text = "X";
+            this.button41.Text = "Z";
             this.button41.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button41.UseVisualStyleBackColor = true;
             // 
@@ -544,7 +452,6 @@ namespace Keyboard.Controllers
             this.button40.Name = "button40";
             this.button40.Size = new System.Drawing.Size(61, 47);
             this.button40.TabIndex = 5;
-            this.button40.Text = "Z";
             this.button40.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button40.UseVisualStyleBackColor = true;
             // 
@@ -558,7 +465,7 @@ namespace Keyboard.Controllers
             this.button39.Name = "button39";
             this.button39.Size = new System.Drawing.Size(61, 47);
             this.button39.TabIndex = 4;
-            this.button39.Text = "N";
+            this.button39.Text = "B";
             this.button39.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button39.UseVisualStyleBackColor = true;
             // 
@@ -572,7 +479,7 @@ namespace Keyboard.Controllers
             this.button38.Name = "button38";
             this.button38.Size = new System.Drawing.Size(61, 47);
             this.button38.TabIndex = 3;
-            this.button38.Text = "B";
+            this.button38.Text = "V";
             this.button38.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button38.UseVisualStyleBackColor = true;
             // 
@@ -586,7 +493,7 @@ namespace Keyboard.Controllers
             this.button37.Name = "button37";
             this.button37.Size = new System.Drawing.Size(61, 47);
             this.button37.TabIndex = 2;
-            this.button37.Text = "V";
+            this.button37.Text = "C";
             this.button37.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button37.UseVisualStyleBackColor = true;
             // 
@@ -608,7 +515,7 @@ namespace Keyboard.Controllers
             this.keyboardLine3.Controls.Add(this.button36, 0, 0);
             this.keyboardLine3.Controls.Add(this.button35, 0, 0);
             this.keyboardLine3.Controls.Add(this.button34, 0, 0);
-            this.keyboardLine3.Controls.Add(this.button33, 0, 0);
+            this.keyboardLine3.Controls.Add(this.keySend, 0, 0);
             this.keyboardLine3.Controls.Add(this.button32, 0, 0);
             this.keyboardLine3.Controls.Add(this.button31, 0, 0);
             this.keyboardLine3.Controls.Add(this.button30, 0, 0);
@@ -668,19 +575,19 @@ namespace Keyboard.Controllers
             this.button34.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button34.UseVisualStyleBackColor = true;
             // 
-            // button33
+            // keySend
             // 
-            this.button33.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button33.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button33.Location = new System.Drawing.Point(717, 2);
-            this.button33.Margin = new System.Windows.Forms.Padding(2);
-            this.button33.Name = "button33";
-            this.button33.Size = new System.Drawing.Size(134, 47);
-            this.button33.TabIndex = 10;
-            this.button33.Text = "1";
-            this.button33.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button33.UseVisualStyleBackColor = true;
+            this.keySend.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.keySend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.keySend.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.keySend.Location = new System.Drawing.Point(717, 2);
+            this.keySend.Margin = new System.Windows.Forms.Padding(2);
+            this.keySend.Name = "keySend";
+            this.keySend.Size = new System.Drawing.Size(134, 47);
+            this.keySend.TabIndex = 10;
+            this.keySend.Text = "Send";
+            this.keySend.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.keySend.UseVisualStyleBackColor = true;
             // 
             // button32
             // 
@@ -692,7 +599,6 @@ namespace Keyboard.Controllers
             this.button32.Name = "button32";
             this.button32.Size = new System.Drawing.Size(61, 47);
             this.button32.TabIndex = 9;
-            this.button32.Text = "1";
             this.button32.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.button32.UseVisualStyleBackColor = true;
             // 
@@ -812,7 +718,7 @@ namespace Keyboard.Controllers
             this.keyboardLine2.Controls.Add(this.button24, 0, 0);
             this.keyboardLine2.Controls.Add(this.button23, 0, 0);
             this.keyboardLine2.Controls.Add(this.button22, 0, 0);
-            this.keyboardLine2.Controls.Add(this.button21, 0, 0);
+            this.keyboardLine2.Controls.Add(this.keyEnter, 0, 0);
             this.keyboardLine2.Controls.Add(this.button20, 0, 0);
             this.keyboardLine2.Controls.Add(this.button19, 0, 0);
             this.keyboardLine2.Controls.Add(this.button18, 0, 0);
@@ -872,19 +778,19 @@ namespace Keyboard.Controllers
             this.button22.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button22.UseVisualStyleBackColor = true;
             // 
-            // button21
+            // keyEnter
             // 
-            this.button21.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button21.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button21.Location = new System.Drawing.Point(717, 2);
-            this.button21.Margin = new System.Windows.Forms.Padding(2);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(134, 47);
-            this.button21.TabIndex = 10;
-            this.button21.Text = "1";
-            this.button21.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.button21.UseVisualStyleBackColor = true;
+            this.keyEnter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.keyEnter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.keyEnter.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.keyEnter.Location = new System.Drawing.Point(717, 2);
+            this.keyEnter.Margin = new System.Windows.Forms.Padding(2);
+            this.keyEnter.Name = "keyEnter";
+            this.keyEnter.Size = new System.Drawing.Size(134, 47);
+            this.keyEnter.TabIndex = 10;
+            this.keyEnter.Text = "Enter";
+            this.keyEnter.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.keyEnter.UseVisualStyleBackColor = true;
             // 
             // button20
             // 
@@ -896,7 +802,6 @@ namespace Keyboard.Controllers
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(61, 47);
             this.button20.TabIndex = 9;
-            this.button20.Text = "1";
             this.button20.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.button20.UseVisualStyleBackColor = true;
             // 
@@ -1016,7 +921,7 @@ namespace Keyboard.Controllers
             this.keyboardLine1.Controls.Add(this.button12, 0, 0);
             this.keyboardLine1.Controls.Add(this.button11, 0, 0);
             this.keyboardLine1.Controls.Add(this.button10, 0, 0);
-            this.keyboardLine1.Controls.Add(this.button9, 0, 0);
+            this.keyboardLine1.Controls.Add(this.keyBackSpace, 0, 0);
             this.keyboardLine1.Controls.Add(this.button8, 0, 0);
             this.keyboardLine1.Controls.Add(this.button7, 0, 0);
             this.keyboardLine1.Controls.Add(this.button6, 0, 0);
@@ -1076,19 +981,19 @@ namespace Keyboard.Controllers
             this.button10.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.button10.UseVisualStyleBackColor = true;
             // 
-            // button9
+            // keyBackSpace
             // 
-            this.button9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(717, 2);
-            this.button9.Margin = new System.Windows.Forms.Padding(2);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(134, 47);
-            this.button9.TabIndex = 9;
-            this.button9.Text = "Backspace";
-            this.button9.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.button9.UseVisualStyleBackColor = true;
+            this.keyBackSpace.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.keyBackSpace.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.keyBackSpace.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.keyBackSpace.Location = new System.Drawing.Point(717, 2);
+            this.keyBackSpace.Margin = new System.Windows.Forms.Padding(2);
+            this.keyBackSpace.Name = "keyBackSpace";
+            this.keyBackSpace.Size = new System.Drawing.Size(134, 47);
+            this.keyBackSpace.TabIndex = 9;
+            this.keyBackSpace.Text = "Backspace";
+            this.keyBackSpace.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.keyBackSpace.UseVisualStyleBackColor = true;
             // 
             // button8
             // 
@@ -1206,7 +1111,8 @@ namespace Keyboard.Controllers
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.connectToolStripMenuItem,
-            this.optionsToolStripMenuItem});
+            this.optionsToolStripMenuItem,
+            this.clearToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
@@ -1231,7 +1137,15 @@ namespace Keyboard.Controllers
             this.optionsToolStripMenuItem.Text = "Options";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
-            // ctrKeyboard
+            // clearToolStripMenuItem
+            // 
+            this.clearToolStripMenuItem.AutoSize = false;
+            this.clearToolStripMenuItem.Name = "clearToolStripMenuItem";
+            this.clearToolStripMenuItem.Size = new System.Drawing.Size(80, 25);
+            this.clearToolStripMenuItem.Text = "Clear";
+            this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
+            // 
+            // frmKeyboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1241,7 +1155,7 @@ namespace Keyboard.Controllers
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.MinimumSize = new System.Drawing.Size(600, 500);
-            this.Name = "ctrKeyboard";
+            this.Name = "frmKeyboard";
             this.Text = "BrainBoard";
             this.Load += new System.EventHandler(this.ctrKeyboard_Load);
             this.Resize += new System.EventHandler(this.ctrKeyboard_Resize);
@@ -1277,7 +1191,7 @@ namespace Keyboard.Controllers
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button keyBackSpace;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
@@ -1285,18 +1199,31 @@ namespace Keyboard.Controllers
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button60;
-        private System.Windows.Forms.Button button59;
-        private System.Windows.Forms.Button button58;
-        private System.Windows.Forms.Button button57;
-        private System.Windows.Forms.Button button56;
-        private System.Windows.Forms.Button button55;
-        private System.Windows.Forms.Button button54;
-        private System.Windows.Forms.Button button53;
-        private System.Windows.Forms.Button button52;
-        private System.Windows.Forms.Button button51;
-        private System.Windows.Forms.Button button50;
-        private System.Windows.Forms.Button button49;
+        private System.Windows.Forms.Button button36;
+        private System.Windows.Forms.Button button35;
+        private System.Windows.Forms.Button button34;
+        private System.Windows.Forms.Button keySend;
+        private System.Windows.Forms.Button button32;
+        private System.Windows.Forms.Button button31;
+        private System.Windows.Forms.Button button30;
+        private System.Windows.Forms.Button button29;
+        private System.Windows.Forms.Button button28;
+        private System.Windows.Forms.Button button27;
+        private System.Windows.Forms.Button button26;
+        private System.Windows.Forms.Button button25;
+        private System.Windows.Forms.Button button24;
+        private System.Windows.Forms.Button button23;
+        private System.Windows.Forms.Button button22;
+        private System.Windows.Forms.Button keyEnter;
+        private System.Windows.Forms.Button button20;
+        private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Button button17;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
         private System.Windows.Forms.Button button48;
         private System.Windows.Forms.Button button47;
         private System.Windows.Forms.Button button46;
@@ -1309,30 +1236,13 @@ namespace Keyboard.Controllers
         private System.Windows.Forms.Button button39;
         private System.Windows.Forms.Button button38;
         private System.Windows.Forms.Button button37;
-        private System.Windows.Forms.Button button36;
-        private System.Windows.Forms.Button button35;
-        private System.Windows.Forms.Button button34;
-        private System.Windows.Forms.Button button33;
-        private System.Windows.Forms.Button button32;
-        private System.Windows.Forms.Button button31;
-        private System.Windows.Forms.Button button30;
-        private System.Windows.Forms.Button button29;
-        private System.Windows.Forms.Button button28;
-        private System.Windows.Forms.Button button27;
-        private System.Windows.Forms.Button button26;
-        private System.Windows.Forms.Button button25;
-        private System.Windows.Forms.Button button24;
-        private System.Windows.Forms.Button button23;
-        private System.Windows.Forms.Button button22;
-        private System.Windows.Forms.Button button21;
-        private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.Button button19;
-        private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button button55;
+        private System.Windows.Forms.Button button54;
+        private System.Windows.Forms.Button button53;
+        private System.Windows.Forms.Button button52;
+        private System.Windows.Forms.Button button51;
+        private System.Windows.Forms.Button button50;
+        private System.Windows.Forms.Button keySpaceBar;
     }
 }
 

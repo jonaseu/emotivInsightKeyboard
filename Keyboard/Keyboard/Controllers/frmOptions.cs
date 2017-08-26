@@ -63,6 +63,7 @@ namespace Keyboard.Controllers
                 _form.IpToConnect = richTextBox1.Text;
                 _form.PortToConnect = Int32.Parse(numericUpDown3.Text);
                 Close();
+                _form.Disconnect();
             }
             else
             {

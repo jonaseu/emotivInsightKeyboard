@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Keyboard.Business_Rules;
 
+
 namespace Keyboard.Controllers
 {
     public partial class frmKeyboard : Form
@@ -14,8 +15,19 @@ namespace Keyboard.Controllers
         public int PortToConnect { get; set; }
 
         private readonly rulKeyboard _rule;
-        private bool _connected; 
-        
+        private bool _connected;
+
+        //Override to disable form as activable
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams param = base.CreateParams;
+                param.ExStyle |= 0x08000000;
+                return param;
+            }
+        }
+
         public frmKeyboard()
         {
             IpToConnect = "127.0.0.1";
@@ -37,6 +49,7 @@ namespace Keyboard.Controllers
             menuStrip1.BackColor = colorsPalette.AplicationBackground;
             connectToolStripMenuItem.ForeColor = colorsPalette.FontColor;
             optionsToolStripMenuItem.ForeColor = colorsPalette.FontColor;
+            clearToolStripMenuItem.ForeColor = colorsPalette.FontColor;
 
             //For each button in form alter its colors
             var buttons = misc.GetAllTypeControls(this, typeof(Button));
@@ -87,6 +100,16 @@ namespace Keyboard.Controllers
 
         }
 
+        public void Disconnect()
+        {
+            if (_connected)
+            {
+                connectToolStripMenuItem.Text = @"Connect";
+                _rule.DisconnectEmotiv();
+                _connected = false;
+            }
+        }
+
         public void SwitchLineColor(int lineNumber)
         {
             var line = (TableLayoutPanel)keyboardKeys.GetControlFromPosition(0, lineNumber);
@@ -95,7 +118,7 @@ namespace Keyboard.Controllers
                 colorsPalette.AplicationBackground);
         }
 
-        public void SwitchColumnColor(int lineNumber, int columnNumber)
+        public int SwitchColumnColor(int lineNumber, int columnNumber)
         {
 
             var line = (TableLayoutPanel)keyboardKeys.GetControlFromPosition(0, lineNumber);
@@ -111,6 +134,8 @@ namespace Keyboard.Controllers
                 btn.BackColor = colorsPalette.ButtonColor;
                 btn.ForeColor = colorsPalette.FontColor;
             }
+
+            return line.ColumnCount;
         }
 
         public void ButtonClicked(int row, int coloumn)
@@ -118,12 +143,31 @@ namespace Keyboard.Controllers
             var line = (TableLayoutPanel)keyboardKeys.GetControlFromPosition(0, row);
             var btn = line.GetControlFromPosition(coloumn, 0);
 
-            Invoke((Action) delegate
+            //If it's just a charachter, than it truly is a keyboard character. Else is a special key
+            if (btn.Text.Length == 1)
+                AlterTextOnControl(label1,label1.Text+btn.Text.ToLower());
+            else
             {
-                label1.Text += btn.Text;
+                if(btn.Name == "keyBackSpace")
+                    AlterTextOnControl(label1,label1.Text.Remove(label1.Text.Length - 1));
+                else if (btn.Name.Equals("KeyEnter"))
+                    label1.Text = label1.Text + '\n';
+                else if (btn.Name.Equals("KeySend"))
+                {
+                    SendKeys.Send(label1.Text);
+                    label1.Text = "";
+                }
+            }
+
+
+        }
+
+        private void AlterTextOnControl(Control ctrl, string text)
+        {
+            Invoke((Action)delegate
+            {
+                ctrl.Text = text;
             });
-
-
         }
 
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -140,6 +184,12 @@ namespace Keyboard.Controllers
             });
             MessageBox.Show(@"Lost connection to " + IpToConnect + @" on port " + PortToConnect, @"Error",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //SendKeys.Send(label1.Text);
+            label1.Text = "";
         }
     }
 }

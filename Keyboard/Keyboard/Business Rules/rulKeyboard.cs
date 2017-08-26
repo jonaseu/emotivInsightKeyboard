@@ -21,9 +21,11 @@ namespace Keyboard.Business_Rules
         private readonly frmKeyboard _form;
         private int _currentLine;
         private int _currentColumn;
-        private bool ShouldBlink;
-        private bool blinkLine = true;
+        private int _numberColumns;
+        private bool _shouldBlink;
+        private bool _blinkLine;
         
+
         //Emotiv Configs
         private Socket _sckEmoEngine = null;
         private string _ptoConnect = "";
@@ -34,6 +36,11 @@ namespace Keyboard.Business_Rules
         public rulKeyboard(frmKeyboard frm)
         {
             _form = frm;
+            _currentLine = 0;
+            _currentColumn = 0;
+            _numberColumns = 12;
+            _shouldBlink = false;
+            _blinkLine = true;
         }
         
         public bool ConnectEmotiv(string host, int port, int interval)
@@ -80,7 +87,7 @@ namespace Keyboard.Business_Rules
    
         private void BeginAlternateLines(int interval)
         {
-            ShouldBlink = true;
+            _shouldBlink = true;
             _blinkTimer = new System.Timers.Timer(interval);
             _blinkTimer.Elapsed += TimerTick;
             _form.SwitchLineColor(0);
@@ -94,16 +101,16 @@ namespace Keyboard.Business_Rules
             _blinkTimer = null;
             _checker = null;
 
-            ShouldBlink = false;
+            _shouldBlink = false;
 
-            if (blinkLine)
+            if (_blinkLine)
                 _form.SwitchLineColor(_currentLine);
             else
                 _form.SwitchColumnColor(_currentLine, _currentColumn);
 
             _currentLine = 0;
             _currentColumn = 0;
-            blinkLine = true;
+            _blinkLine = true;
         }
 
         private void ReceiveCallback(IAsyncResult ar)
@@ -153,10 +160,10 @@ namespace Keyboard.Business_Rules
 
         private void TimerTick(object sender, EventArgs e)
         {
-            if (ShouldBlink)
+            if (_shouldBlink)
             {
                 //If it's supposed to blink line switches its color, if not, switch columns color
-                if (blinkLine)
+                if (_blinkLine)
                 {
                     _form.SwitchLineColor(_currentLine);
                     _currentLine = (_currentLine + 1) % 5;
@@ -164,8 +171,8 @@ namespace Keyboard.Business_Rules
                 }
                 else
                 {
-                    _form.SwitchColumnColor(_currentLine,_currentColumn);
-                    _currentColumn = (_currentColumn + 1) % 12;
+                    _numberColumns = _form.SwitchColumnColor(_currentLine,_currentColumn);
+                    _currentColumn = (_currentColumn + 1) % _numberColumns;
                     _form.SwitchColumnColor(_currentLine, _currentColumn);
                 }
             }
@@ -175,15 +182,15 @@ namespace Keyboard.Business_Rules
         {
             _blinkTimer.Stop();
             //If was blinking lines change to blink columns, if was blinking columns press the current button
-            if (blinkLine)
+            if (_blinkLine)
             {
-                blinkLine = false;
+                _blinkLine = false;
                 _form.SwitchLineColor(_currentLine); 
                 _form.SwitchColumnColor(_currentLine,0); 
             }
             else
             {
-                blinkLine = true;
+                _blinkLine = true;
                 _form.SwitchColumnColor(_currentLine, _currentColumn);
                 _form.ButtonClicked(_currentLine, _currentColumn);
                 
@@ -192,5 +199,5 @@ namespace Keyboard.Business_Rules
             }
             _blinkTimer.Start();
         }
-    }
+    }  
 }

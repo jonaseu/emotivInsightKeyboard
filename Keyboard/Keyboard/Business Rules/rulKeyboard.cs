@@ -90,6 +90,7 @@ namespace Keyboard.Business_Rules
             _shouldBlink = true;
             _blinkTimer = new System.Timers.Timer(interval);
             _blinkTimer.Elapsed += TimerTick;
+            _timeInterval = interval;
             _form.SwitchLineColor(0);
             _blinkTimer.Start();
         }
@@ -160,8 +161,10 @@ namespace Keyboard.Business_Rules
 
         private void TimerTick(object sender, EventArgs e)
         {
+            _blinkTimer.Stop();
+            _blinkTimer.Interval = _timeInterval;
             if (_shouldBlink)
-            {
+            {   
                 //If it's supposed to blink line switches its color, if not, switch columns color
                 if (_blinkLine)
                 {
@@ -176,17 +179,19 @@ namespace Keyboard.Business_Rules
                     _form.SwitchColumnColor(_currentLine, _currentColumn);
                 }
             }
+            _blinkTimer.Start();
         }
 
         private void ActivateKey()
         {
             _blinkTimer.Stop();
+            _blinkTimer.Interval = _timeInterval * 1.5;
             //If was blinking lines change to blink columns, if was blinking columns press the current button
             if (_blinkLine)
             {
                 _blinkLine = false;
                 _form.SwitchLineColor(_currentLine); 
-                _form.SwitchColumnColor(_currentLine,0); 
+                _form.SwitchColumnColor(_currentLine,0);
             }
             else
             {

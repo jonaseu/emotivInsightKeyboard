@@ -24,7 +24,7 @@ namespace Keyboard.Controllers
                 comboBox1.SelectedIndex = 1;
             
             richTextBox1.Text = _form.IpToConnect;
-            numericUpDown1.Value = _form.Sensibility;
+            numericUpDown1.Value = _form.Sensitivity;
             numericUpDown2.Value = _form.Interval;
             numericUpDown3.Text = _form.PortToConnect.ToString();
 
@@ -58,7 +58,7 @@ namespace Keyboard.Controllers
             if (misc.ValidateIPv4(richTextBox1.Text))
             {
                 _form.Interval = (int)numericUpDown2.Value;
-                _form.Sensibility = (int)numericUpDown1.Value;
+                _form.Sensitivity = (int)numericUpDown1.Value;
                 _form.ClickMode = comboBox1.Text;
                 _form.IpToConnect = richTextBox1.Text;
                 _form.PortToConnect = Int32.Parse(numericUpDown3.Text);
@@ -74,7 +74,15 @@ namespace Keyboard.Controllers
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Process.Start(@"C:\Program Files (x86)\Emotiv Xavier ControlPanel v3.3.3\Applications\EmotivXavierControlpanel.exe");
+            try
+            {
+                Process.Start(
+                    @"C:\Program Files (x86)\Emotiv Xavier ControlPanel v3.3.3\Applications\EmotivXavierControlpanel.exe");
+
+            }
+            catch (Exception ex)
+            {
+            }
         }
     }
 }

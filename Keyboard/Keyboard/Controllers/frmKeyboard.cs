@@ -10,7 +10,7 @@ namespace Keyboard.Controllers
     {
         public string IpToConnect { get; set; }
         public string ClickMode { get; set; }
-        public int Sensibility { get; set; }
+        public int Sensitivity { get; set; }
         public int Interval { get; set; }
         public int PortToConnect { get; set; }
 
@@ -31,9 +31,9 @@ namespace Keyboard.Controllers
         public frmKeyboard()
         {
             IpToConnect = "127.0.0.1";
-            Sensibility = 3;
+            Sensitivity = 1;
             ClickMode = "Blink";
-            Interval = 800;
+            Interval = 1000;
             PortToConnect = 1900;
 
             InitializeComponent();
@@ -79,7 +79,7 @@ namespace Keyboard.Controllers
             {
                 connectToolStripMenuItem.Text = @"Connecting";
                 Refresh();
-                if (_rule.ConnectEmotiv(IpToConnect, PortToConnect, Interval))
+                if (_rule.ConnectEmotiv(IpToConnect, PortToConnect, ClickMode, Interval, Sensitivity))
                 {
                     connectToolStripMenuItem.Text = @"Disconnect";
                     _connected = true;

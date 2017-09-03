@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Net.Sockets;
 using System.Text;
 using Keyboard.Controllers;
@@ -16,9 +18,11 @@ namespace Keyboard.Business_Rules
 
     class rulKeyboard
     {
+        private readonly frmKeyboard _form;
+        
         private System.Timers.Timer _blinkTimer;
         private System.Timers.Timer _checker;
-        private readonly frmKeyboard _form;
+        private Stopwatch _stopWatch;
         private int _currentLine;
         private int _currentColumn;
         private int _numberColumns;
@@ -28,9 +32,10 @@ namespace Keyboard.Business_Rules
 
         //Emotiv Configs
         private Socket _sckEmoEngine = null;
-        private string _ptoConnect = "";
-        private int _clickMode = 0;
-        private int _sensibility = 0;
+        private string _ipToConnect = "";
+        private string _clickMode = "";
+        private int _portToConnect = 0;
+        private int _sensitivity = 0;
         private int _timeInterval = 0;
 
         public rulKeyboard(frmKeyboard frm)
@@ -41,17 +46,28 @@ namespace Keyboard.Business_Rules
             _numberColumns = 12;
             _shouldBlink = false;
             _blinkLine = true;
+            _stopWatch = new Stopwatch();
         }
-        
-        public bool ConnectEmotiv(string host, int port, int interval)
+
+        public bool ConnectEmotiv(string host, int port,string clickMode, int interval, int sensitivity)
         {
+
+            _clickMode = clickMode;
+            _timeInterval = interval;
+            _sensitivity = sensitivity;
+            _ipToConnect = host;
+            _portToConnect = port;
             _sckEmoEngine = new Socket(AddressFamily.InterNetwork,
                 SocketType.Stream, ProtocolType.Tcp);
+
             StateObject state = new StateObject { WorkSocket = _sckEmoEngine };
 
             try
             {
-                _sckEmoEngine.Connect(host, 1900);
+                _sckEmoEngine.Connect(_ipToConnect, _portToConnect);
+                _sckEmoEngine.SendTimeout = 2000;
+                byte[] toBytes = Encoding.ASCII.GetBytes("Mode:"+_clickMode+"  Interval:"+_timeInterval+"  Sensitivity:"+_sensitivity);
+                _sckEmoEngine.Send(toBytes);
                 BeginAlternateLines(interval);
             }
             catch (SocketException socktEx)
@@ -161,42 +177,65 @@ namespace Keyboard.Business_Rules
 
         private void TimerTick(object sender, EventArgs e)
         {
-            _blinkTimer.Stop();
-            _blinkTimer.Interval = _timeInterval;
-            if (_shouldBlink)
-            {   
-                //If it's supposed to blink line switches its color, if not, switch columns color
-                if (_blinkLine)
+            try
+            {
+                _blinkTimer.Stop();
+                _blinkTimer.Interval = _timeInterval;
+                if (_shouldBlink)
                 {
-                    _form.SwitchLineColor(_currentLine);
-                    _currentLine = (_currentLine + 1) % 5;
-                    _form.SwitchLineColor(_currentLine);
+                    //If it's supposed to blink line switches its color, if not, switch columns color
+                    if (_blinkLine)
+                    {
+                        _form.SwitchLineColor(_currentLine);
+                        _currentLine = (_currentLine + 1) % 5;
+                        _form.SwitchLineColor(_currentLine);
+                    }
+                    else
+                    {
+                        _numberColumns = _form.SwitchColumnColor(_currentLine, _currentColumn);
+                        _currentColumn = (_currentColumn + 1) % _numberColumns;
+                        _form.SwitchColumnColor(_currentLine, _currentColumn);
+                    }
                 }
-                else
-                {
-                    _numberColumns = _form.SwitchColumnColor(_currentLine,_currentColumn);
-                    _currentColumn = (_currentColumn + 1) % _numberColumns;
-                    _form.SwitchColumnColor(_currentLine, _currentColumn);
-                }
+                _stopWatch.Start();
+                _blinkTimer.Start();
             }
-            _blinkTimer.Start();
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
-
         private void ActivateKey()
         {
+            _stopWatch.Stop();
             _blinkTimer.Stop();
             _blinkTimer.Interval = _timeInterval * 1.5;
             //If was blinking lines change to blink columns, if was blinking columns press the current button
             if (_blinkLine)
             {
+                
                 _blinkLine = false;
-                _form.SwitchLineColor(_currentLine); 
+                _form.SwitchLineColor(_currentLine);
+                if (_stopWatch.Elapsed.TotalMilliseconds < 100)
+                {
+                    _currentLine = mod(_currentLine - 1, 5);
+                }
+
+
                 _form.SwitchColumnColor(_currentLine,0);
             }
             else
             {
-                _blinkLine = true;
+                
                 _form.SwitchColumnColor(_currentLine, _currentColumn);
+                
+                if (_stopWatch.Elapsed.Milliseconds < 100)
+                {
+                    _currentColumn = mod(_currentColumn - 1, _numberColumns);
+                }
+
+                _blinkLine = true;
+
                 _form.ButtonClicked(_currentLine, _currentColumn);
                 
                 _currentLine = _currentColumn = 0;
@@ -204,5 +243,7 @@ namespace Keyboard.Business_Rules
             }
             _blinkTimer.Start();
         }
+
+        private int mod(int k, int n) { return ((k %= n) < 0) ? k + n : k; }
     }  
 }

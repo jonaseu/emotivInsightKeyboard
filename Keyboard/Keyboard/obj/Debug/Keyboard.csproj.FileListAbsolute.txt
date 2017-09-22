@@ -10,3 +10,13 @@ C:\Users\Jonas\Desktop\Visual Studio Projects\emotivInsightKeyboard\Keyboard\Key
 C:\Users\Jonas\Desktop\Visual Studio Projects\emotivInsightKeyboard\Keyboard\Keyboard\obj\Debug\Keyboard.exe
 C:\Users\Jonas\Desktop\Visual Studio Projects\emotivInsightKeyboard\Keyboard\Keyboard\obj\Debug\Keyboard.pdb
 C:\Users\Jonas\Desktop\Visual Studio Projects\emotivInsightKeyboard\Keyboard\Keyboard\obj\Debug\Keyboard.csprojResolveAssemblyReference.cache
+C:\Users\Jonas\Desktop\Visual Studio Projects\C#\emotivInsightKeyboard\Keyboard\Keyboard\bin\Debug\Keyboard.exe.config
+C:\Users\Jonas\Desktop\Visual Studio Projects\C#\emotivInsightKeyboard\Keyboard\Keyboard\obj\Debug\Keyboard.exe
+C:\Users\Jonas\Desktop\Visual Studio Projects\C#\emotivInsightKeyboard\Keyboard\Keyboard\obj\Debug\Keyboard.pdb
+C:\Users\Jonas\Desktop\Visual Studio Projects\C#\emotivInsightKeyboard\Keyboard\Keyboard\bin\Debug\Keyboard.exe
+C:\Users\Jonas\Desktop\Visual Studio Projects\C#\emotivInsightKeyboard\Keyboard\Keyboard\bin\Debug\Keyboard.pdb
+C:\Users\Jonas\Desktop\Visual Studio Projects\C#\emotivInsightKeyboard\Keyboard\Keyboard\obj\Debug\Keyboard.csprojResolveAssemblyReference.cache
+C:\Users\Jonas\Desktop\Visual Studio Projects\C#\emotivInsightKeyboard\Keyboard\Keyboard\obj\Debug\Keyboard.Controllers.frmKeyboard.resources
+C:\Users\Jonas\Desktop\Visual Studio Projects\C#\emotivInsightKeyboard\Keyboard\Keyboard\obj\Debug\Keyboard.Controllers.frmOptions.resources
+C:\Users\Jonas\Desktop\Visual Studio Projects\C#\emotivInsightKeyboard\Keyboard\Keyboard\obj\Debug\Keyboard.Properties.Resources.resources
+C:\Users\Jonas\Desktop\Visual Studio Projects\C#\emotivInsightKeyboard\Keyboard\Keyboard\obj\Debug\Keyboard.csproj.GenerateResource.Cache

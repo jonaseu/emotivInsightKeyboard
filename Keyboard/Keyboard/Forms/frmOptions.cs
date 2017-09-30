@@ -24,7 +24,7 @@ namespace Keyboard.Controllers
                 comboBox1.SelectedIndex = 1;
             
             richTextBox1.Text = _form.IpToConnect;
-            numericUpDown1.Value = _form.Sensitivity;
+            numericUpDown1.Value = _form.ClickSpeed;
             numericUpDown2.Value = _form.Interval;
             numericUpDown3.Text = _form.PortToConnect.ToString();
 
@@ -34,7 +34,7 @@ namespace Keyboard.Controllers
             {
                 var btn = (Label)control;
                 btn.ForeColor = colorsPalette.FontColor;
-                btn.Margin = new Padding(20,0,20,0);
+                btn.Margin = new Padding(10,0,20,0);
             }
 
             var buttons = misc.GetAllTypeControls(this, typeof(Button));
@@ -58,7 +58,7 @@ namespace Keyboard.Controllers
             if (misc.ValidateIPv4(richTextBox1.Text))
             {
                 _form.Interval = (int)numericUpDown2.Value;
-                _form.Sensitivity = (int)numericUpDown1.Value;
+                _form.ClickSpeed = (int)numericUpDown1.Value;
                 _form.ClickMode = comboBox1.Text;
                 _form.IpToConnect = richTextBox1.Text;
                 _form.PortToConnect = Int32.Parse(numericUpDown3.Text);

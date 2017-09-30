@@ -37,7 +37,7 @@ namespace Keyboard.Business_Rules
         private string _ipToConnect = "";
         private string _clickMode = "";
         private int _portToConnect = 0;
-        private int _sensitivity = 0;
+        private int _clickSpeed = 0;
         private int _timeInterval = 0;
 
         public rulKeyboard(frmKeyboard frm)
@@ -53,12 +53,12 @@ namespace Keyboard.Business_Rules
         }
 
 
-        public bool ConnectEmotiv(string host, int port, string clickMode, int interval, int sensitivity)
+        public bool ConnectEmotiv(string host, int port, string clickMode, int interval, int speed)
         {
 
             _clickMode = clickMode;
             _timeInterval = interval;
-            _sensitivity = sensitivity;
+            _clickSpeed = speed;
             _ipToConnect = host;
             _portToConnect = port;
             _sckEmoEngine = new Socket(AddressFamily.InterNetwork,
@@ -70,8 +70,13 @@ namespace Keyboard.Business_Rules
             {
                 _sckEmoEngine.Connect(_ipToConnect, _portToConnect);
                 _sckEmoEngine.SendTimeout = 2000;
-                byte[] toBytes = Encoding.ASCII.GetBytes("Mode:" + _clickMode + "  Interval:" + _timeInterval + "  Sensitivity:" + _sensitivity);
-                _sckEmoEngine.Send(toBytes);
+
+                int mode = 0;
+                if (_clickMode == "Blink")
+                    mode = 0;
+                else
+                    mode = 1;
+                _sckEmoEngine.Send(Encoding.ASCII.GetBytes(mode + " " + _timeInterval + " " + _clickSpeed));
                 BeginAlternateLines(interval);
             }
             catch (SocketException socktEx)
@@ -140,7 +145,7 @@ namespace Keyboard.Business_Rules
             try
             {
                 _blinkTimer.Stop();
-                _blinkTimer.Interval = _timeInterval;
+                _blinkTimer.Interval = _timeInterval * 1.5;
                 //Sets the last text saved 
                 _form.AlterTextOnControl(_lastText);
                 //Change color of the Undo Button
@@ -150,12 +155,14 @@ namespace Keyboard.Business_Rules
                     if (_blinkLine)
                     {
                         _form.SwitchLineColor(_currentLine);
+                        _lastLine = misc.mod(_lastLine - 2, 5);
                         _form.SwitchLineColor(_lastLine);
                     }
                     else
                     {
                         //Calls backspace
                         _form.SwitchColumnColor(_currentLine, _currentColumn);
+                        _lastColumn = misc.mod(_lastColumn - 2, _numberColumns);
                         _form.SwitchColumnColor(_lastLine,_lastColumn);
                     }
                 }

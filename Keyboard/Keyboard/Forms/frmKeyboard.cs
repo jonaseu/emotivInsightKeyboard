@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Keyboard.Business_Rules;
-
+using System.Speech.Synthesis;
 
 namespace Keyboard.Controllers
 {
@@ -16,7 +16,7 @@ namespace Keyboard.Controllers
 
         private readonly rulKeyboard _rule;
         private bool _connected;
-
+        private SpeechSynthesizer _synth;
         //Override to disable form as activable
         protected override CreateParams CreateParams
         {
@@ -38,6 +38,9 @@ namespace Keyboard.Controllers
 
             InitializeComponent();
             _rule = new rulKeyboard(this);
+
+            _synth = new SpeechSynthesizer(); 
+            _synth.SetOutputToDefaultAudioDevice();
         }
 
         private void ctrKeyboard_Load(object sender, EventArgs e)
@@ -143,27 +146,57 @@ namespace Keyboard.Controllers
             var line = (TableLayoutPanel)keyboardKeys.GetControlFromPosition(0, row);
             var btn = line.GetControlFromPosition(coloumn, 0);
 
-            //If button text is just a charachter, than it truly is a keyboard character. Else is a special key
+            //If button text is just a character, than it truly is a keyboard character. Else is a special key
             if (btn.Text.Length == 1)
                 AlterTextOnControl(label1.Text+btn.Text.ToLower());
             else
             {
-                if (btn.Name.Equals("keyBackSpace"))
-                {
-                    if (label1.Text != "")
-                        AlterTextOnControl(label1.Text.Remove(label1.Text.Length - 1));
-                }
-                else if (btn.Name.Equals("KeyEnter"))
-                    label1.Text = label1.Text + '\n';
-                else if (btn.Name.Equals("KeySend"))
-                    SendKeys.Send(label1.Text);
-                else if (btn.Name.Equals("keyUndo"))
-                    _rule.UndoClick();
-                if (btn.Name.Equals("keyClear") || btn.Name.Equals("KeySend"))
-                    AlterTextOnControl("");
+                interactWithButton(btn.Name);    
             }
+        }
+        private void interactWithButton(String buttonName)
+        {
+            switch(buttonName)
+                {
+                    case "keyBackSpace":
+                        if (label1.Text != "")
+                            AlterTextOnControl(label1.Text.Remove(label1.Text.Length - 1));
+                        break;
+                    
+                    case "KeyEnter":                    
+                        AlterTextOnControl(label1.Text + '\n');
+                        break;
 
-
+                    case "keySend":
+                        _synth.Speak(label1.Text);
+                        //SendKeys.Send(label1.Text);
+                        AlterTextOnControl("");
+                        break;
+                    
+                    case "keyUndo":                    
+                        _rule.UndoClick();
+                        break;
+                    
+                    case "keyUrgent":                    
+                        _synth.Speak("I need Help");
+                        break;
+                    
+                    case "keyThirsty":                   
+                        _synth.Speak("I'm thirsty");
+                        break;
+                    
+                    case "keyHungry":                    
+                        _synth.Speak("I'm hungry");
+                        break;
+                    
+                    case "keyTired":                    
+                        _synth.Speak("I'm feeling tired");
+                        break;                   
+                    
+                    case "keyClear":                    
+                        AlterTextOnControl("");
+                        break;
+            }
         }
 
         public String getText()

@@ -146,7 +146,7 @@
             this.richTextBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.richTextBox1.BackColor = System.Drawing.SystemColors.Control;
             this.richTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(199, 3);
+            this.richTextBox1.Location = new System.Drawing.Point(167, 3);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(126, 23);
             this.richTextBox1.TabIndex = 7;
@@ -161,7 +161,7 @@
             0,
             0,
             0});
-            this.numericUpDown2.Location = new System.Drawing.Point(199, 93);
+            this.numericUpDown2.Location = new System.Drawing.Point(167, 93);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             2000,
             0,
@@ -217,7 +217,12 @@
             // 
             this.numericUpDown1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.numericUpDown1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown1.Location = new System.Drawing.Point(199, 63);
+            this.numericUpDown1.Increment = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Location = new System.Drawing.Point(167, 63);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             1500,
             0,
@@ -249,8 +254,8 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Blink",
-            "Brain Command"});
-            this.comboBox1.Location = new System.Drawing.Point(199, 33);
+            "Mental Push"});
+            this.comboBox1.Location = new System.Drawing.Point(167, 33);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(126, 23);
             this.comboBox1.TabIndex = 5;
@@ -259,7 +264,7 @@
             // 
             this.numericUpDown3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.numericUpDown3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericUpDown3.Location = new System.Drawing.Point(199, 123);
+            this.numericUpDown3.Location = new System.Drawing.Point(167, 123);
             this.numericUpDown3.Maximum = new decimal(new int[] {
             66000,
             0,

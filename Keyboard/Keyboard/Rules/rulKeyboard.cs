@@ -30,7 +30,7 @@ namespace Keyboard.Business_Rules
         private bool _shouldBlink;
         private bool _blinkLine;
         private bool _hasUndone;
-
+        private static int numberLines = 6;
 
         //Emotiv Configs
         private Socket _sckEmoEngine = null;
@@ -72,7 +72,7 @@ namespace Keyboard.Business_Rules
                 _sckEmoEngine.SendTimeout = 2000;
 
                 int mode = 0;
-                if (_clickMode == "Blink")
+                if (_clickMode == "Mental Push")
                     mode = 0;
                 else
                     mode = 1;
@@ -107,6 +107,7 @@ namespace Keyboard.Business_Rules
         public void DisconnectEmotiv()
         {
             _sckEmoEngine.Disconnect(false);
+            _sckEmoEngine.Close();
             StopAlternateLines();
         }
 
@@ -141,21 +142,20 @@ namespace Keyboard.Business_Rules
 
         public void UndoClick()
         {
-
             try
             {
                 _blinkTimer.Stop();
-                _blinkTimer.Interval = _timeInterval * 1.5;
+                _blinkTimer.Interval = _timeInterval * 3;
                 //Sets the last text saved 
                 _form.AlterTextOnControl(_lastText);
                 //Change color of the Undo Button
-                _form.SwitchColumnColor(4, 6);
+                _form.SwitchColumnColor(5, 6);
                 if (_shouldBlink)
                 {
                     if (_blinkLine)
                     {
                         _form.SwitchLineColor(_currentLine);
-                        _lastLine = misc.mod(_lastLine - 2, 5);
+                        _lastLine = misc.mod(_lastLine - 2, numberLines);
                         _form.SwitchLineColor(_lastLine);
                     }
                     else
@@ -202,7 +202,7 @@ namespace Keyboard.Business_Rules
                     {
                         if (state.Sb.ToString() == "UNDO" && !_hasUndone)
                             UndoClick();
-                        else if (state.Sb.ToString() == "1")
+                        else if (state.Sb.ToString() == "ACTIVATE")
                             ActivateKey();
                     }
                     catch (Exception ex)
@@ -239,11 +239,11 @@ namespace Keyboard.Business_Rules
                 _blinkTimer.Interval = _timeInterval;
                 if (_shouldBlink)
                 {
-                    //If it's supposed to blink line switches its color, if not, switch columns color
+                    //If it's supposed to blink line, switches its color, if not, switch columns color
                     if (_blinkLine)
                     {
                         _form.SwitchLineColor(_currentLine);
-                        _currentLine = (_currentLine + 1) % 5;
+                        _currentLine = (_currentLine + 1) % numberLines;
                         _form.SwitchLineColor(_currentLine);
                     }
                     else
@@ -265,21 +265,17 @@ namespace Keyboard.Business_Rules
         {
             _stopWatch.Stop();
             _blinkTimer.Stop();
-            _blinkTimer.Interval = _timeInterval * 1.5;
+            _blinkTimer.Interval = _timeInterval * 2.5;
             if (_hasUndone)
             {
                 _hasUndone = false;
-                _form.SwitchColumnColor(4, 6);
+                _form.SwitchColumnColor(5, 6);
             }
 
             //If was blinking lines change to blink columns, if was blinking columns press the current button
             if (_blinkLine)
             {
                 _form.SwitchLineColor(_currentLine);
-                //if (_stopWatch.Elapsed.TotalMilliseconds < 100)
-                //{
-                //    _currentLine = misc.mod(_currentLine - 1, 5);
-                //}
                 _form.SwitchColumnColor(_currentLine, 0);
                 _currentColumn = 0;
             }
@@ -290,12 +286,6 @@ namespace Keyboard.Business_Rules
                 _lastText = _form.getText();
 
                 _form.SwitchColumnColor(_currentLine, _currentColumn);
-
-                //if (_stopWatch.Elapsed.Milliseconds < 100)
-                //{
-                //    _currentColumn = misc.mod(_currentColumn - 1, _numberColumns);
-                //}
-
                 _form.ButtonClicked(_currentLine, _currentColumn);
                 _form.SwitchLineColor(0);
                 _currentLine = _currentColumn = 0;

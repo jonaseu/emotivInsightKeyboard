@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Keyboard.Controllers;
+using Keyboard.Rules;
 
 namespace Keyboard
 {

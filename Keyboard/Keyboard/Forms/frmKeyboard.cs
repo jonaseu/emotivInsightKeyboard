@@ -39,9 +39,9 @@ namespace Keyboard.Controllers
             Language = "pt_BR";
             //Language = "en";
             IpToConnect = "127.0.0.1";
-            ClickSpeed = 1200;
+            ClickSpeed = 1500;
             ClickMode = "Mental Push";
-            Interval = 1700;
+            Interval = 2000;
             PortToConnect = 1900;
 
             InitializeComponent();
@@ -69,15 +69,11 @@ namespace Keyboard.Controllers
                 var btn = (Button)control;
                 btn.ForeColor = colorsPalette.FontColor;
                 btn.FlatAppearance.BorderColor = colorsPalette.ButtonBorder;
-                if (control.Parent.Name == "keyboardLine0")
-                {
-                    btn.BackColor = colorsPalette.AplicationBackground;
-                }
-                else
-                {
+                btn.BackColor = colorsPalette.ButtonColor;
+                if (control.Parent.Name != "keyboardLine0")
                     btn.Margin = new Padding(3, 4, 3, 4);
-                    btn.BackColor = colorsPalette.ButtonColor;
-                }
+
+                    
             }
         }
 

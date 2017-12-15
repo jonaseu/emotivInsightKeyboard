@@ -72,10 +72,11 @@ namespace Keyboard.Business_Rules
                 _sckEmoEngine.SendTimeout = 2000;
 
                 int mode = 0;
-                if (_clickMode == "Mental Push")
+                if (_clickMode == "Raise Eyebrows")
                     mode = 0;
-                else
+                else if (_clickMode == "Mental Push")
                     mode = 1;
+
                 _sckEmoEngine.Send(Encoding.ASCII.GetBytes(mode + " " + _timeInterval + " " + _clickSpeed));
                 BeginAlternateLines(interval);
             }

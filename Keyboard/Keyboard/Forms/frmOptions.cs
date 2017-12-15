@@ -18,7 +18,7 @@ namespace Keyboard.Controllers
         private void ctrOptions_Load(object sender, EventArgs e)
         {
 
-            if(_form.ClickMode == "Blink")
+            if(_form.ClickMode == "Raise Eyebrows")
                 comboBox1.SelectedIndex = 0;
             else
                 comboBox1.SelectedIndex = 1;
